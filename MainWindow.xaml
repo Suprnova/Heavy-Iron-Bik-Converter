@@ -1,0 +1,18 @@
+﻿<Window x:Class="BFBB_and_TSSM_Bik_Converter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BFBB_and_TSSM_Bik_Converter"
+        mc:Ignorable="d"
+        Title="Battle and Movie Bik Converter" Height="150" Width="320">
+    <Grid>
+        <Label Content="Video Directory:" HorizontalAlignment="Right" Margin="0,10,210,0" VerticalAlignment="Top"/>
+        <Button x:Name="browse" Content="..." HorizontalAlignment="Left" Margin="262,15,0,0" VerticalAlignment="Top" Height="18" Width="22" Click="Button_Click"/>
+        <RadioButton x:Name="bfbb" Content="BFBB" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton Content="TSSM" HorizontalAlignment="Left" Margin="200,47,0,0" VerticalAlignment="Top"/>
+        <Label Content="Target Game:" HorizontalAlignment="Right" Margin="0,41,210,0" VerticalAlignment="Top"/>
+        <Button Content="Convert!" HorizontalAlignment="Center" Margin="0,84,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click_1"/>
+        <TextBox x:Name="directory" HorizontalAlignment="Left" Margin="110,15,0,0" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" Width="152" Height="18"/>
+    </Grid>
+</Window>
