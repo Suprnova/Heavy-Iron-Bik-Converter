@@ -38,12 +38,19 @@ namespace BFBB_and_TSSM_Bik_Converter
             }
         }
 
+        private void Options_Click(object sender, RoutedEventArgs e)
+        {
+            Options options = new Options();
+            options.Owner = this;
+            options.ShowDialog();
+        }
+
         /*private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             volume.Text = slider.Value.ToString();
         }*/
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Convert_Click(object sender, RoutedEventArgs e)
         {
             Hide();
             AllocConsole();
@@ -62,8 +69,40 @@ namespace BFBB_and_TSSM_Bik_Converter
             string filename = directory.Text.Substring(directory.Text.LastIndexOf('\\') + 1);
             //int volumeInt = Int32.Parse(volume.Text);
             // Process.Start("cmd.exe", $"/C cd {Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location))}&ffmpeg -i \"{directory.Text}\" -filter:a \"volume = {volumeInt/100}\" -vf scale={scale} {aviName}").WaitForExit();
-            Console.WriteLine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
-            Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf scale={scale} {aviName}").WaitForExit();
+            if (letterbox.Text == "1")
+            {
+                if (trim.Text == "1")
+                {
+                    int fs = Int32.Parse(frameStart.Text);
+                    int fe = Int32.Parse(frameEnd.Text);
+                    TimeSpan ts = TimeSpan.FromSeconds(fs);
+                    TimeSpan te = TimeSpan.FromSeconds(fe);
+                    string trimStart = ts.ToString(@"mm\:ss");
+                    string trimEnd = te.ToString(@"mm\:ss");
+                    Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf \"scale ={scale}:force_original_aspect_ratio = decrease,pad ={scale}:-1:-1:color = black\" -ss {trimStart} -to {trimEnd} {aviName}").WaitForExit();
+                }
+                else
+                {
+                    Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf \"scale ={scale}:force_original_aspect_ratio = decrease,pad ={scale}:-1:-1:color = black\" {aviName}").WaitForExit();
+                }
+            }
+            else
+            {
+                if (trim.Text == "1")
+                {
+                    int fs = Int32.Parse(frameStart.Text);
+                    int fe = Int32.Parse(frameEnd.Text);
+                    TimeSpan ts = TimeSpan.FromSeconds(fs);
+                    TimeSpan te = TimeSpan.FromSeconds(fe);
+                    string trimStart = ts.ToString(@"mm\:ss");
+                    string trimEnd = te.ToString(@"mm\:ss");
+                    Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf scale={scale} -ss {trimStart} -to {trimEnd} {aviName}").WaitForExit();
+                }
+                else
+                {
+                    Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf scale={scale} {aviName}").WaitForExit();
+                }          
+            }
             Console.WriteLine("Conversion successful!");
             
             string path = directory.Text.Remove(directory.Text.LastIndexOf('\\'));
@@ -85,6 +124,12 @@ namespace BFBB_and_TSSM_Bik_Converter
             Console.WriteLine("Conversion to .bik complete!");
             File.Delete(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), aviName));
             File.Delete(rlst);
+            try
+            {
+                Process[] proc = Process.GetProcessesByName("radbatch");
+                proc[0].Kill();
+            }
+            catch { }
             Process.Start("explorer.exe", "/select, \"" + Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), aviName.Replace(".avi", ".bik")) + "\"");
             Environment.Exit(1);
         }
