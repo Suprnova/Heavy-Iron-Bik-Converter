@@ -14,3 +14,5 @@ Select the video file that you want to convert into a .bik file, along with the 
 # Notes
 
 RAD Video Tools is under a limited license that does not allow me to redistribute the software with this program, which is why you have to install the application yourself. RAD Video Tools is under the copyright of RAD Game Tools Inc.
+
+This software uses code of [FFmpeg](http://ffmpeg.org) licensed under the [LGPLv2.1](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html) and its source can be downloaded [here](https://ffmpeg.org/download.html). FFmpeg is under the copyright of Fabrice Bellard and the FFmpeg Team.
