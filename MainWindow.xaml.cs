@@ -55,14 +55,18 @@ namespace BFBB_and_TSSM_Bik_Converter
             Hide();
             AllocConsole();
             string scale;
-            if ((bool)bfbb.IsChecked)
+            if ((bool)bfbb.IsChecked || (bool)scoob.IsChecked)
             {
                 scale = "640:480";
             }
+            else if ((bool)tssm.IsChecked)
+            {
+                scale = "512:480";
+            }
             else
             {
-                // must be a movie target
-                scale = "512:480";
+                //must be an incredibles target
+                scale = "512:448";
             }
             string aviName = DateTime.Now.Ticks + ".avi";
             Console.WriteLine("Converting file to avi...");
@@ -133,6 +137,5 @@ namespace BFBB_and_TSSM_Bik_Converter
             Process.Start("explorer.exe", "/select, \"" + Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), aviName.Replace(".avi", ".bik")) + "\"");
             Environment.Exit(1);
         }
-
     }
 }
