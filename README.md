@@ -1,6 +1,13 @@
 # Heavy Iron Bik Converter
 A tool that will transform any ffmpeg file format into a Bik usable in several Heavy Iron games running on the Renderware engine.
 
+# Supported games:
+
+* Battle for Bikini Bottom
+* The SpongeBob SquarePants Movie
+* Night of 100 Frights
+* The Incredibles 
+
 # How to use:
 **You need to have RAD Video Tools installed on your computer for this tool to function correctly, download it [here](http://www.radgametools.com/down/Bink/RADTools.7z).**
 
