@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Media.Animation;
 using Ookii.Dialogs.Wpf;
 
 namespace BFBB_and_TSSM_Bik_Converter
@@ -59,7 +60,7 @@ namespace BFBB_and_TSSM_Bik_Converter
             {
                 scale = "640:480";
             }
-            else if ((bool)tssm.IsChecked)
+            else if ((bool)tssm.IsChecked || (bool)rotu.IsChecked)
             {
                 scale = "512:480";
             }

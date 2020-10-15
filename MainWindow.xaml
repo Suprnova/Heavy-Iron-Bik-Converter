@@ -15,12 +15,13 @@
         <RadioButton x:Name="scoob" Content="N100F" HorizontalAlignment="Left" Margin="128,75,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="incredibles" Content="Incredibles" HorizontalAlignment="Left" Margin="200,75,0,0" VerticalAlignment="Top"/>
         <Label Content="Target Game:" HorizontalAlignment="Right" Margin="0,52,210,0" VerticalAlignment="Top"/>
-        <Button Content="Convert!" Margin="194,114,36,0" VerticalAlignment="Top" Click="Convert_Click"/>
+        <Button Content="Convert!" Margin="194,131,36,0" VerticalAlignment="Top" Click="Convert_Click"/>
         <TextBox x:Name="directory" HorizontalAlignment="Left" Margin="110,15,0,0" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" Width="152" Height="18"/>
-        <Button Content="Options..." HorizontalAlignment="Left" Margin="36,114,0,0" VerticalAlignment="Top" Width="90" Click="Options_Click"/>
+        <Button Content="Options..." HorizontalAlignment="Left" Margin="36,131,0,0" VerticalAlignment="Top" Width="90" Click="Options_Click"/>
         <TextBlock Name="letterbox" HorizontalAlignment="Left" Margin="13,11,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" Visibility="Hidden"/>
         <TextBlock Name="trim" HorizontalAlignment="Left" Margin="13,11,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" Visibility="Hidden"/>
         <TextBlock Name="frameStart" HorizontalAlignment="Left" Margin="13,11,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" Visibility="Hidden"/>
         <TextBlock Name="frameEnd" HorizontalAlignment="Left" Margin="13,11,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" Visibility="Hidden"/>
+        <RadioButton x:Name="rotu" Content="ROTU&#xD;&#xA;" HorizontalAlignment="Left" Margin="128,103,0,0" VerticalAlignment="Top" Height="15"/>
     </Grid>
 </Window>
