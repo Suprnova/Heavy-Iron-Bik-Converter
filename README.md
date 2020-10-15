@@ -7,7 +7,7 @@ A tool that will transform any ffmpeg file format into a Bik usable in several H
 * The SpongeBob SquarePants Movie
 * Scooby-Doo: Night of 100 Frights
 * The Incredibles 
-* The Incredibles: Revenge of the Underminer
+* The Incredibles: Rise of the Underminer
 
 # How to use:
 **You need to have RAD Video Tools installed on your computer for this tool to function correctly, download it [here](http://www.radgametools.com/down/Bink/RADTools.7z).**
