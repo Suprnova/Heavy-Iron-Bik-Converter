@@ -9,7 +9,13 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-This software uses code of http://ffmpeg.org licensed under http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html and its source can be downloaded at https://ffmpeg.org/download.html. Any part of this software that utilizes FFmpeg is under the copyright of Fabrice Bellard and the FFmpeg Team. This software should not be redistributed in any form that retains FFmpeg components without ensuring that the redistribution does not infringe on the licenses of FFmpeg.
+This software uses code of http://ffmpeg.org licensed under
+http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html and its source can be
+downloaded at https://ffmpeg.org/download.html. Any part of this software that
+utilizes FFmpeg is under the copyright of Fabrice Bellard and the FFmpeg Team.
+This software should not be redistributed in any form that retains FFmpeg
+components without ensuring that the redistribution does not infringe on the
+licenses of FFmpeg.
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
