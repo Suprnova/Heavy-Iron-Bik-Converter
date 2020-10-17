@@ -1,5 +1,5 @@
 # Heavy Iron Bik Converter
-A tool that will transform any ffmpeg file format into a Bik usable in several Heavy Iron games running on the Renderware engine.
+A tool that will transform any ffmpeg file format into a Bik usable in all Heavy Iron games running on the Renderware engine.
 
 # Supported games:
 
