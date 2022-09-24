@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BFBB_and_TSSM_Bik_Converter"
         mc:Ignorable="d"
-        Title="Battle and Movie Bik Converter" Height="200" Width="320"
+        Title="Heavy Iron Bik Converter" Height="200" Width="320"
         ResizeMode="NoResize">
     <Grid>
         <Label Content="Video Directory:" HorizontalAlignment="Right" Margin="0,10,210,0" VerticalAlignment="Top"/>

@@ -10,7 +10,7 @@ A tool that will transform any ffmpeg file format into a Bik usable in all Heavy
 * The Incredibles: Rise of the Underminer
 
 # How to use:
-**You need to have RAD Video Tools installed on your computer for this tool to function correctly, download it [here](http://www.radgametools.com/down/Bink/RADTools.7z).**
+> :warning: **You need to have RAD Video Tools installed on your computer for this tool to function correctly, download it [here](http://www.radgametools.com/down/Bink/RADTools.7z) (password is "RAD").**
 
 Select the video file that you want to convert into a .bik file, along with the target game, then select the settings, which are explained below. Afterwords, select "Convert!" After a while, you will be brought to the RAD Video Tools window. Simply select "Start" on the bottom left of the window and wait. Once it's done converting, File Explorer will automatically open to the new .bik file, which you can then put into the associated game.
 

@@ -69,9 +69,10 @@ namespace BFBB_and_TSSM_Bik_Converter
                 //must be an incredibles target
                 scale = "512:448";
             }
-            string aviName = DateTime.Now.Ticks + ".avi";
             Console.WriteLine("Converting file to avi...");
-            string filename = directory.Text.Substring(directory.Text.LastIndexOf('\\') + 1);
+            string filename = Path.GetFileNameWithoutExtension(directory.Text);
+            string aviName = filename + ".avi";
+            string path = Path.GetDirectoryName(directory.Text);
             //int volumeInt = Int32.Parse(volume.Text);
             // Process.Start("cmd.exe", $"/C cd {Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location))}&ffmpeg -i \"{directory.Text}\" -filter:a \"volume = {volumeInt/100}\" -vf scale={scale} {aviName}").WaitForExit();
             if (letterbox.Text == "1")
@@ -84,11 +85,11 @@ namespace BFBB_and_TSSM_Bik_Converter
                     TimeSpan te = TimeSpan.FromSeconds(fe);
                     string trimStart = ts.ToString(@"mm\:ss");
                     string trimEnd = te.ToString(@"mm\:ss");
-                    Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf \"scale ={scale}:force_original_aspect_ratio = decrease,pad ={scale}:-1:-1:color = black\" -ss {trimStart} -to {trimEnd} {aviName}").WaitForExit();
+                    Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf \"scale ={scale}:force_original_aspect_ratio = decrease,pad ={scale}:-1:-1:color = black\" -ss {trimStart} -to {trimEnd} {Path.Combine(path, aviName)}").WaitForExit();
                 }
                 else
                 {
-                    Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf \"scale ={scale}:force_original_aspect_ratio = decrease,pad ={scale}:-1:-1:color = black\" {aviName}").WaitForExit();
+                    Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf \"scale ={scale}:force_original_aspect_ratio = decrease,pad ={scale}:-1:-1:color = black\" {Path.Combine(path, aviName)}").WaitForExit();
                 }
             }
             else
@@ -101,18 +102,17 @@ namespace BFBB_and_TSSM_Bik_Converter
                     TimeSpan te = TimeSpan.FromSeconds(fe);
                     string trimStart = ts.ToString(@"mm\:ss");
                     string trimEnd = te.ToString(@"mm\:ss");
-                    Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf scale={scale} -ss {trimStart} -to {trimEnd} {aviName}").WaitForExit();
+                    Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf scale={scale} -ss {trimStart} -to {trimEnd} {Path.Combine(path, aviName)}").WaitForExit();
                 }
                 else
                 {
-                    Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf scale={scale} {aviName}").WaitForExit();
+                    Process.Start("cmd.exe", $"/C cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}&ffmpeg -i \"{directory.Text}\" -vf scale={scale} {Path.Combine(path, aviName)}").WaitForExit();
                 }          
             }
             Console.WriteLine("Conversion successful!");
             
-            string path = directory.Text.Remove(directory.Text.LastIndexOf('\\'));
-            string rlst = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), DateTime.Now.Ticks + ".rlst");
-            File.WriteAllText(rlst, $"cd {Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)} \nBinkc \"{aviName}\" \"{aviName.Replace(".avi", ".bik")}\"  /v100 /d0 /m3.0 /l4 /p8 /O");
+            string rlst = Path.Combine(path, DateTime.Now.Ticks + ".rlst");
+            File.WriteAllText(rlst, $"cd {path} \nBinkc \"{aviName}\" \"{aviName.Replace(".avi", ".bik")}\"  /v100 /d0 /m3.0 /l4 /p8 /O");
             Process.Start(new ProcessStartInfo(rlst) { UseShellExecute = true });
             Process[] processlist = Process.GetProcessesByName("binkc");
             do
@@ -127,7 +127,7 @@ namespace BFBB_and_TSSM_Bik_Converter
             }
             while (processlistC.Length >= 1);
             Console.WriteLine("Conversion to .bik complete!");
-            File.Delete(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), aviName));
+            File.Delete(Path.Combine(path, aviName));
             File.Delete(rlst);
             try
             {
@@ -135,7 +135,7 @@ namespace BFBB_and_TSSM_Bik_Converter
                 proc[0].Kill();
             }
             catch { }
-            Process.Start("explorer.exe", "/select, \"" + Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), aviName.Replace(".avi", ".bik")) + "\"");
+            Process.Start("explorer.exe", "/select, \"" + Path.Combine(path, aviName.Replace(".avi", ".bik")) + "\"");
             Environment.Exit(1);
         }
     }
